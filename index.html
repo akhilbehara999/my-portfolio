@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondara Akhil Behara - RPG Portfolio</title>
+    <meta name="description" content="RPG-themed portfolio of Pondara Akhil Behara, a student developer passionate about coding, AI, and game development. Explore my skills, projects, and achievements in an interactive RPG format.">
+    <meta name="keywords" content="portfolio, RPG, game development, student developer, AI enthusiast, coding, programming, Godot Engine, Python, JavaScript, HTML, CSS">
+    <meta name="author" content="Pondara Akhil Behara">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pondara Akhil Behara",
+        "jobTitle": "Student Developer",
+        "description": "Aspiring game designer and AI enthusiast pursuing B.Tech in CSE (AI & DS)",
+        "url": "https://your-portfolio-url.com",
+        "sameAs": [
+            "https://github.com/akhilbehara999",
+            "https://www.linkedin.com/in/akhil-behara-016126381",
+            "https://twitter.com",
+            "https://www.instagram.com/akhil_majunu"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Chaitanya Engineering College"
+        },
+        "knowsAbout": [
+            "Game Development",
+            "Python",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Godot Engine",
+            "AI Tools"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Day/Night Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle" class="toggle-button" aria-label="Toggle day/night theme">
+            <span class="sun-icon" aria-hidden="true">☀️</span>
+            <span class="moon-icon" aria-hidden="true">🌙</span>
+        </button>
+    </div>
+    
+    <!-- RPG Class Selection -->
+    <div class="class-selection">
+        <button id="classToggle" class="toggle-button" aria-label="Select RPG class">
+            <span class="class-icon" aria-hidden="true">🧙</span>
+        </button>
+        <div id="classDropdown" class="class-dropdown" aria-hidden="true">
+            <button class="class-option" data-class="warrior">
+                <span class="class-emoji">⚔️</span>
+                <span class="class-name">Warrior</span>
+            </button>
+            <button class="class-option" data-class="mage">
+                <span class="class-emoji">🔮</span>
+                <span class="class-name">Mage</span>
+            </button>
+            <button class="class-option" data-class="archer">
+                <span class="class-emoji">🏹</span>
+                <span class="class-name">Archer</span>
+            </button>
+            <button class="class-option" data-class="rogue">
+                <span class="class-emoji">🗡️</span>
+                <span class="class-name">Rogue</span>
+            </button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section lazy-load" aria-labelledby="hero-title">
+            <h1 id="hero-title" class="sr-only">Portfolio Overview</h1>
+            <div class="character-card">
+                <div class="avatar-container">
+                    <img src="assets/mypic.png" alt="Pondara Akhil Behara" class="avatar">
+                    <div class="hp-mp-container">
+                        <div class="stat-bar">
+                            <div class="bar-label">HP</div>
+                            <div class="bar-container">
+                                <div class="hp-bar" id="hpBar" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="bar-label">MP</div>
+                            <div class="bar-container">
+                                <div class="mp-bar" id="mpBar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="character-details">
+                    <h1 class="character-name">Pondara Akhil Behara</h1>
+                    <p class="character-tagline">Student Developer | AI Enthusiast | Aspiring Game Designer</p>
+                    <div class="character-info">
+                        <p><span class="label">Race:</span> Human</p>
+                        <p><span class="label">Class:</span> Student Developer</p>
+                        <p><span class="label">Level:</span> <span id="level">Beginner</span> → <span id="nextLevel">Intermediate</span></p>
+                    </div>
+                    <div class="character-bio">
+                        <p>12th pass, pursuing B.Tech in CSE (AI & DS) at Chaitanya Engineering College, Kommadi. Passionate about coding, AI, and game development.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Stats Panel -->
+            <div class="stats-panel" aria-labelledby="stats-title">
+                <h3 id="stats-title">Character Stats</h3>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-name">Experience</span>
+                        <span class="stat-value" id="experienceStat">1250 XP</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Quests Completed</span>
+                        <span class="stat-value" id="questsStat">3</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Skills Mastered</span>
+                        <span class="stat-value" id="skillsStat">7</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-name">Achievements</span>
+                        <span class="stat-value" id="achievementsStat">3</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Items Section -->
+        <section class="interactive-items lazy-load">
+            <h2 class="section-title">Interactive Items</h2>
+            <div class="items-container">
+                <div class="interactive-item" data-info="education">
+                    <div class="item-icon">🎓</div>
+                    <div class="item-name">Education</div>
+                    <div class="item-info" id="educationInfo">
+                        <p>B.Tech in CSE (AI & DS) - Chaitanya Engineering College</p>
+                        <p>Expected Graduation: 2028</p>
+                    </div>
+                </div>
+                <div class="interactive-item" data-info="projects">
+                    <div class="item-icon">🎮</div>
+                    <div class="item-name">Projects</div>
+                    <div class="item-info" id="projectsInfo">
+                        <p>Crack the Level - Solo Puzzle Game</p>
+                        <p>Built with Godot Engine and AI Tools</p>
+                    </div>
+                </div>
+                <div class="interactive-item" data-info="goals">
+                    <div class="item-icon">🎯</div>
+                    <div class="item-name">Goals</div>
+                    <div class="item-info" id="goalsInfo">
+                        <p>Develop a realistic, user-friendly survival game</p>
+                        <p>Focusing on Python for automation & problem-solving</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weapon Mastery Section -->
+        <section class="weapon-mastery lazy-load">
+            <h2 class="section-title">Weapon Mastery</h2>
+            <div class="weapons-container">
+                <div class="weapon-item">
+                    <div class="weapon-name">C</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 40%"></div>
+                    </div>
+                    <div class="xp-text">Beginner</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">Java</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 50%"></div>
+                    </div>
+                    <div class="xp-text">Beginner → Improving</div>
+                </div>
+                <div class="weapon-item highlighted">
+                    <div class="weapon-name">Python</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 60%"></div>
+                    </div>
+                    <div class="xp-text">Intermediate → Improving</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">HTML</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 50%"></div>
+                    </div>
+                    <div class="xp-text">Beginner → Improving</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">CSS</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 45%"></div>
+                    </div>
+                    <div class="xp-text">Beginner → Improving</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">JavaScript</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 40%"></div>
+                    </div>
+                    <div class="xp-text">Beginner</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">Godot Engine</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 77%"></div>
+                    </div>
+                    <div class="xp-text">Beginner → Improving</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">GitHub</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 67%"></div>
+                    </div>
+                    <div class="xp-text">Intermediate → Improving</div>
+                </div>
+                <div class="weapon-item">
+                    <div class="weapon-name">AI Tools</div>
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" style="width: 80%"></div>
+                    </div>
+                    <div class="xp-text">Intermediate → Improving</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skill Mastery Section -->
+        <section class="skill-mastery">
+            <h2 class="section-title">Skill Mastery</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Game Development</div>
+                    <div class="skill-level">7/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 70%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">AI Tools</div>
+                    <div class="skill-level">6/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 60%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Web Basics</div>
+                    <div class="skill-level">5/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 50%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Problem Solving</div>
+                    <div class="skill-level">6/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soft Skills Section -->
+        <section class="soft-skills">
+            <h2 class="section-title">Soft Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">Teamwork</div>
+                    <div class="skill-level">8/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Creativity</div>
+                    <div class="skill-level">9/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Problem-Solving</div>
+                    <div class="skill-level">7/10</div>
+                    <div class="skill-bar-container">
+                        <div class="skill-bar" style="--target-width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Training Log Section -->
+        <section class="training-log">
+            <h2 class="section-title">Training Log</h2>
+            <div class="timeline">
+                <div class="timeline-item completed">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>12th Standard</h3>
+                        <p>Completed</p>
+                    </div>
+                </div>
+                <div class="timeline-item active">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>B.Tech in CSE (AI & DS)</h3>
+                        <p>In Progress - Chaitanya Engineering College</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quest Log Section -->
+        <section class="quest-log">
+            <h2 class="section-title">Quest Log</h2>
+            <div class="quests-container">
+                <div class="quest active-quest">
+                    <h3>Active Quest</h3>
+                    <p>Studying B.Tech</p>
+                    <div class="quest-details">
+                        <p><strong>Location:</strong> Chaitanya Engineering College</p>
+                        <p><strong>Expected Graduation:</strong> 2028</p>
+                    </div>
+                </div>
+                <div class="quest completed-quest">
+                    <h3>Completed Quest</h3>
+                    <div class="quest-project">
+                        <h4>Crack the Level (Solo Puzzle Game)</h4>
+                        <div class="project-details">
+                            <p><strong>Role:</strong> Developer & Designer</p>
+                            <p><strong>Tech Used:</strong> Godot Engine, AI Tools</p>
+                        </div>
+                    </div>
+                    <div class="quest-challenge">
+                        <p><strong>Challenge:</strong> Lack of resources & guidance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Upcoming Quests -->
+        <section class="upcoming-quests">
+            <h2 class="section-title">Upcoming Quests</h2>
+            <div class="quests-container">
+                <div class="quest future-quest">
+                    <h3>Future Quest</h3>
+                    <p>I want to build a Futuristic Survival Realistic game</p>
+                    <div class="quest-details">
+                        <p><strong>Expected Graduation:</strong> 2028 (Chaitanya Engineering College)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Player Interests Section -->
+        <section class="player-interests">
+            <h2 class="section-title">Player Interests (Bonus Stats)</h2>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <div class="interest-name">Battle Royale</div>
+                    <div class="interest-stat">+10 Strategy 🗡️</div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-name">Puzzle</div>
+                    <div class="interest-stat">+8 Logic 🧩</div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-name">Horror</div>
+                    <div class="interest-stat">+7 Immersion 👻</div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-name">Realistic Games</div>
+                    <div class="interest-stat">+9 Creativity 🎮</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Section -->
+        <section class="achievements">
+            <h2 class="section-title">Achievement Trophy</h2>
+            <div class="achievements-container">
+                <div class="achievement unlocked">
+                    <div class="trophy-icon">🏆</div>
+                    <div class="achievement-name">Solo Game Developer</div>
+                    <div class="achievement-desc">Released first game "Crack the Level"</div>
+                </div>
+                <div class="achievement unlocked">
+                    <div class="trophy-icon">🥇</div>
+                    <div class="achievement-name">First Game Released</div>
+                    <div class="achievement-desc">Successfully launched indie puzzle game</div>
+                </div>
+                <div class="achievement unlocked">
+                    <div class="trophy-icon">🐍</div>
+                    <div class="achievement-name">Learning Python</div>
+                    <div class="achievement-desc">Currently focusing on automation & problem-solving</div>
+                </div>
+                <div class="achievement locked">
+                    <div class="trophy-icon">🔒</div>
+                    <div class="achievement-name">Future Multiplayer Game Dev</div>
+                    <div class="achievement-desc">Planning large-scale multiplayer experience</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skill Tree Section -->
+        <section class="skill-tree">
+            <h2 class="section-title">Skill Tree</h2>
+            <div class="skill-tree-container">
+                <!-- Level 1: Core Programming -->
+                <div class="skill-tree-level">
+                    <div class="skill-node core">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">💻</div>
+                            <div class="skill-name">Core Programming</div>
+                            <div class="skill-level">Level 5</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 2: Main Branches -->
+                <div class="skill-tree-level">
+                    <div class="skill-node web">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">🌐</div>
+                            <div class="skill-name">Web Development</div>
+                            <div class="skill-level">Level 3</div>
+                        </div>
+                    </div>
+                    <div class="skill-node game">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">🎮</div>
+                            <div class="skill-name">Game Development</div>
+                            <div class="skill-level">Level 4</div>
+                        </div>
+                    </div>
+                    <div class="skill-node ai">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">🤖</div>
+                            <div class="skill-name">AI & ML</div>
+                            <div class="skill-level">Level 2</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 3: Specializations -->
+                <div class="skill-tree-level">
+                    <div class="skill-node frontend">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">🎨</div>
+                            <div class="skill-name">Frontend</div>
+                            <div class="skill-level">Level 3</div>
+                        </div>
+                    </div>
+                    <div class="skill-node backend">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">⚙️</div>
+                            <div class="skill-name">Backend</div>
+                            <div class="skill-level">Level 2</div>
+                        </div>
+                    </div>
+                    <div class="skill-node godot">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">🕹️</div>
+                            <div class="skill-name">Godot Engine</div>
+                            <div class="skill-level">Level 4</div>
+                        </div>
+                    </div>
+                    <div class="skill-node design">
+                        <div class="skill-node-content">
+                            <div class="skill-icon">✏️</div>
+                            <div class="skill-name">Game Design</div>
+                            <div class="skill-level">Level 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section class="goals">
+            <h2 class="section-title">Long-term Goal</h2>
+            <div class="goal-content">
+                <p>Develop a realistic, user-friendly survival game.</p>
+            </div>
+        </section>
+
+        <!-- Quest Journal Section -->
+        <section class="quest-journal">
+            <h2 class="section-title">Quest Journal</h2>
+            <div class="daily-quest">
+                <h3>Daily Quest</h3>
+                <div class="quest-content">
+                    <p id="dailyQuestText">Loading today's quest...</p>
+                    <button id="dailyQuestButton" class="quest-action">Accept Quest</button>
+                </div>
+            </div>
+            <div class="journal-container">
+                <div class="quest-entry available" data-quest="explore">
+                    <div class="quest-header">
+                        <span class="quest-status">Available</span>
+                        <h3>Explore the Portfolio</h3>
+                    </div>
+                    <div class="quest-description">
+                        <p>Discover all sections of this RPG portfolio</p>
+                        <div class="quest-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/5 sections</span>
+                        </div>
+                    </div>
+                    <button class="quest-action">Accept Quest</button>
+                </div>
+                
+                <div class="quest-entry available" data-quest="skills">
+                    <div class="quest-header">
+                        <span class="quest-status">Available</span>
+                        <h3>Master New Skills</h3>
+                    </div>
+                    <div class="quest-description">
+                        <p>Unlock 3 new skills in the skill tree</p>
+                        <div class="quest-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/3 skills</span>
+                        </div>
+                    </div>
+                    <button class="quest-action">Accept Quest</button>
+                </div>
+                
+                <div class="quest-entry available" data-quest="achievements">
+                    <div class="quest-header">
+                        <span class="quest-status">Available</span>
+                        <h3>Unlock Achievements</h3>
+                    </div>
+                    <div class="quest-description">
+                        <p>Unlock 2 new achievements by interacting with the site</p>
+                        <div class="quest-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">0/2 achievements</span>
+                        </div>
+                    </div>
+                    <button class="quest-action">Accept Quest</button>
+                </div>
+                
+                <div class="quest-entry in-progress" data-quest="contact">
+                    <div class="quest-header">
+                        <span class="quest-status">In Progress</span>
+                        <h3>Contact the Developer</h3>
+                    </div>
+                    <div class="quest-description">
+                        <p>Send a message through the contact form</p>
+                        <div class="quest-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                            <span class="progress-text">1/2 steps</span>
+                        </div>
+                    </div>
+                    <button class="quest-action">View Progress</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download CV Button -->
+        <div class="cv-container">
+            <button class="treasure-chest" id="downloadCV">
+                <span class="chest-icon">💰</span>
+                <span class="chest-text">Download CV</span>
+            </button>
+        </div>
+
+        <!-- Inventory Section -->
+        <section class="inventory">
+            <h2 class="section-title">Inventory</h2>
+            <div class="inventory-container">
+                <div class="inventory-grid">
+                    <div class="inventory-item" data-item="python">
+                        <div class="item-icon">🐍</div>
+                        <div class="item-name">Python</div>
+                        <div class="item-level">Level 7</div>
+                        <div class="item-description">General-purpose programming language</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="javascript">
+                        <div class="item-icon">JS</div>
+                        <div class="item-name">JavaScript</div>
+                        <div class="item-level">Level 2</div>
+                        <div class="item-description">Web development language</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="html">
+                        <div class="item-icon">HTML</div>
+                        <div class="item-name">HTML</div>
+                        <div class="item-level">Level 3</div>
+                        <div class="item-description">Markup language for web pages</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="css">
+                        <div class="item-icon">CSS</div>
+                        <div class="item-name">CSS</div>
+                        <div class="item-level">Level 3</div>
+                        <div class="item-description">Styling language for web pages</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="godot">
+                        <div class="item-icon">🕹️</div>
+                        <div class="item-name">Godot Engine</div>
+                        <div class="item-level">Level 4</div>
+                        <div class="item-description">Game development engine</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="github">
+                        <div class="item-icon">🐙</div>
+                        <div class="item-name">GitHub</div>
+                        <div class="item-level">Level 5</div>
+                        <div class="item-description">Version control platform</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="ai">
+                        <div class="item-icon">🤖</div>
+                        <div class="item-name">AI Tools</div>
+                        <div class="item-level">Level 5</div>
+                        <div class="item-description">Machine learning and AI frameworks</div>
+                    </div>
+                    
+                    <div class="inventory-item" data-item="creative">
+                        <div class="item-icon">🎨</div>
+                        <div class="item-name">Creativity</div>
+                        <div class="item-level">Level 7</div>
+                        <div class="item-description">Creative problem-solving skills</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visitor Achievements Section -->
+        <section class="visitor-achievements">
+            <h2 class="section-title">Visitor Achievements</h2>
+            <div class="achievements-container">
+                <div class="achievement locked" data-achievement="first-visit">
+                    <div class="trophy-icon">👋</div>
+                    <div class="achievement-name">First Visit</div>
+                    <div class="achievement-desc">Welcome to the portfolio!</div>
+                </div>
+                
+                <div class="achievement locked" data-achievement="explorer">
+                    <div class="trophy-icon">🔍</div>
+                    <div class="achievement-name">Explorer</div>
+                    <div class="achievement-desc">Scrolled to the bottom of the page</div>
+                </div>
+                
+                <div class="achievement locked" data-achievement="interactive">
+                    <div class="trophy-icon">👆</div>
+                    <div class="achievement-name">Interactive User</div>
+                    <div class="achievement-desc">Clicked on 5 interactive elements</div>
+                </div>
+                
+                <div class="achievement locked" data-achievement="quest-master">
+                    <div class="trophy-icon">📜</div>
+                    <div class="achievement-name">Quest Master</div>
+                    <div class="achievement-desc">Completed 3 quests</div>
+                </div>
+                
+                <div class="achievement locked" data-achievement="collector">
+                    <div class="trophy-icon">🎒</div>
+                    <div class="achievement-name">Collector</div>
+                    <div class="achievement-desc">Viewed all inventory items</div>
+                </div>
+                
+                <div class="achievement locked" data-achievement="night-owl">
+                    <div class="trophy-icon">🌙</div>
+                    <div class="achievement-name">Night Owl</div>
+                    <div class="achievement-desc">Visited at night time</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NPC Contact Form -->
+        <section class="contact-section">
+            <h2 class="section-title">Contact the NPC</h2>
+            <form class="npc-contact-form">
+                <div class="form-group">
+                    <label for="name">Adventurer's Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Scroll Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message in a Bottle:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="send-message-btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- RPG Footer -->
+    <footer class="rpg-footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://github.com/akhilbehara999?tab=repositories" target="_blank" class="social-icon" aria-label="GitHub">
+                    <span class="pixel-emoji">🐱</span>
+                    <span class="social-name">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/akhil-behara-016126381?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <span class="pixel-emoji">👔</span>
+                    <span class="social-name">LinkedIn</span>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter">
+                    <span class="pixel-emoji">🐦</span>
+                    <span class="social-name">Twitter</span>
+                </a>
+                <a href="https://www.instagram.com/akhil_majunu/?igsh=MTdhcGxxcWZ4dGtzNw%3D%3D#" target="_blank" class="social-icon" aria-label="Instagram">
+                    <span class="pixel-emoji">📸</span>
+                    <span class="social-name">Instagram</span>
+                </a>
+                <a href="https://youtube.com" target="_blank" class="social-icon" aria-label="YouTube">
+                    <span class="pixel-emoji">📺</span>
+                    <span class="social-name">YouTube</span>
+                </a>
+                <!-- WhatsApp Channel -->
+                <a href="https://whatsapp.com/channel/0029VbAdoQtCMY0PDTlYMy0N" target="_blank" class="social-icon whatsapp" aria-label="WhatsApp">
+                    <span class="pixel-emoji">📱</span>
+                    <span class="social-name">WhatsApp</span>
+                </a>
+            </div>
+            <div class="footer-text">
+                <p>© 2025 Pondara Akhil Behara | RPG Portfolio</p>
+                <p class="visitor-counter">Visitors: <span id="visitorCount">0</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="working.js"></script>
+</body>
+</html>
