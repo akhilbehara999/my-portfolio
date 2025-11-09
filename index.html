@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondara Akhil Behara - Terminal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <div class="button close"></div>
+                <div class="button minimize"></div>
+                <div class="button maximize"></div>
+            </div>
+            <div class="terminal-title">Akhil@portfolio: ~</div>
+        </div>
+        <div class="terminal-body" id="terminal">
+            <div class="terminal-output" id="output">
+                <div class="welcome-message">
+                    <p>Welcome to Pondara Akhil Behara's Terminal Portfolio</p>
+                    <p>BTech Student - AI&DS Branch</p>
+                    <p>Chaitanya Engineering College | Expected Graduation: 2028</p>
+                    <p>Type <span class="command-highlight">help</span> to see available commands</p>
+                    <br>
+                </div>
+            </div>
+            <div class="terminal-input-line">
+                <span class="prompt">Akhil@portfolio:~$</span>
+                <input type="text" id="command-input" autofocus autocomplete="off">
+                <span class="cursor" id="cursor">_</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
