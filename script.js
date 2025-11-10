@@ -23,7 +23,7 @@ class TerminalPortfolio {
                 degree: "BTech ",
                 branch: "AI&DS",
                 college: "Chaitanya Engineering College",
-                graduation: "2028(expected)",
+                graduation: "2027(expected)",
                 inter:"MPC (Maths, Physics, Chemistry)",
                 interCollege: "A.P Model College, Sompeta",
                 interBoard: "AP State Board",
