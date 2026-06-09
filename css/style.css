@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+/* --- Design Tokens --- */
+:root {
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    --font-display: 'Archivo', sans-serif;
+
+    /* Transition Speeds (Spring-like Easing) */
+    --transition-fast: 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-normal: 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-slow: 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+
+    /* Shadow styles */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Dark Theme Variables (Default) --- */
+html,
+:root[data-theme="dark"] {
+    --bg-primary: #08050E; /* Amethyst Black */
+    --bg-secondary: #040207;
+    --bg-gradient: linear-gradient(135deg, #08050E 0%, #030105 100%);
+    
+    --glass-bg: rgba(18, 11, 28, 0.55);
+    --glass-border: rgba(192, 132, 252, 0.12);
+    --glass-border-hover: rgba(192, 132, 252, 0.25);
+    
+    --text-primary: #F5F3F7; /* Pearl white with slight violet */
+    --text-secondary: #C8B1E4; /* Lilac-lavender secondary */
+    --text-muted: #7A668D; /* Muted violet-gray */
+    
+    --accent-purple: #8B5CF6; /* Space Violet */
+    --accent-teal: #06B6D4; /* Deep Cyan */
+    --accent-pink: #D946EF; /* Neon Magenta */
+    --accent-amber: #FBBF24; /* Solar Gold */
+    
+    --accent-gradient-1: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+    --accent-gradient-2: linear-gradient(135deg, #D946EF 0%, #8B5CF6 100%);
+    
+    --shadow-accent: rgba(139, 92, 246, 0.12);
+    --scrollbar-track: #040207;
+    --scrollbar-thumb: #1E1235;
+    --scrollbar-thumb-hover: #8B5CF6;
+    
+    color-scheme: dark;
+
+    /* Hero Polaroid Card Variables */
+    --card-bg: #120B1C;
+    --card-border: var(--glass-border);
+    --card-shadow: rgba(0, 0, 0, 0.5) 0px 40px 30px -20px;
+    --card-mail-stroke: var(--accent-amber);
+    --card-mail-hover: var(--accent-pink);
+    --card-pic-border: var(--accent-purple);
+    --card-bottom-bg: #1A1028;
+    --card-btn-bg: #08050E;
+    --card-btn-color: var(--text-secondary);
+    --card-btn-hover-bg: var(--accent-purple);
+    --card-btn-hover-color: var(--text-primary);
+}
+
+/* --- Light Theme Variables --- */
+
+/* --- Reset --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background var(--transition-slow), color var(--transition-normal);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+button, input, textarea {
+    font-family: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: var(--radius-full);
+    border: 2px solid var(--scrollbar-track);
+    transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* --- Typography & Headers --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-primary);
+}
+
+/* --- Global Utilities --- */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.text-gradient {
+    background: var(--accent-gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.text-gradient-alt {
+    background: var(--accent-gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.section-title-wrap {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    font-family: var(--font-mono);
+    color: var(--accent-teal);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.project-popup-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.55s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease, transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.project-popup-inner {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.6rem;
+  color: var(--text-primary);
+}
+
+.project-books-grid:hover + .project-popup-panel,
+.project-popup-panel.active {
+  max-height: 260px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .section-title-wrap {
+        margin-bottom: 2.5rem;
+    }
+}
+
+/* Hide animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}

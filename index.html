@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondara Akhil Behara | Data Analyst</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Welcome to the interactive portfolio of Pondara Akhil Behara, a Computer Science student specializing in AI & Data Science and Data Analysis.">
+    <meta name="keywords" content="Pondara Akhil Behara, Akhil Behara, Data Analyst, Data Science, Python, SQL, Tableau, Supabase, FileFlow, ThinkRing">
+    <meta name="author" content="Pondara Akhil Behara">
+    
+    <!-- Theme blocking script (Executed immediately to prevent FOUC) -->
+    <script src="js/theme.js"></script>
+    
+    <!-- Tailwind CSS v3 Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        amethyst: {
+                            DEFAULT: '#8B5CF6',
+                            light: '#C8B1E4',
+                            dark: '#08050E',
+                            deep: '#120B1C',
+                        },
+                        solar: {
+                            DEFAULT: '#FBBF24',
+                            light: '#FCD34D',
+                            dark: '#D97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <!-- Preloader Overlay -->
+    <div class="loader-wrapper" id="loader-wrapper">
+        <div class="loader">
+            <svg height="0" width="0" viewBox="0 0 64 64" class="absolute">
+                <defs xmlns="http://www.w3.org/2000/svg">
+                    <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="b">
+                        <stop stop-color="#973BED"></stop>
+                        <stop stop-color="#007CFF" offset="1"></stop>
+                    </linearGradient>
+                    <linearGradient gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="c">
+                        <stop stop-color="#FFC800"></stop>
+                        <stop stop-color="#F0F" offset="1"></stop>
+                        <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
+                    </linearGradient>
+                    <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="d">
+                        <stop stop-color="#00E0ED"></stop>
+                        <stop stop-color="#00DA72" offset="1"></stop>
+                    </linearGradient>
+                    <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="e">
+                        <stop stop-color="#FF5E62"></stop>
+                        <stop stop-color="#FF9966" offset="1"></stop>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 12,54 L 32,10 L 52,54 M 20,38 H 44" class="dash" id="a" pathLength="360"></path>
+            </svg>
+            <div class="w-2"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 18,8 V 56 M 46,8 L 18,32 L 46,56" class="spin" id="k" pathLength="360"></path>
+            </svg>
+            <div class="w-2"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 16,8 V 56 M 48,8 V 56 M 16,32 H 48" class="dash" id="h" pathLength="360"></path>
+            </svg>
+            <div class="w-2"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+                <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#e)" d="M 22,8 H 42 M 32,8 V 56 M 22,56 H 42" class="dash" id="i" pathLength="360"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Interactive Particle Backdrop Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Floating Bottom Navigation Dock -->
+    <div class="bottom-nav-dock">
+        <div class="flex justify-around gap-2 md:gap-4 items-center px-4 py-1 bg-black rounded-[15px] ring-1 ring-white shadow-2xl">
+            <!-- Home -->
+            <a href="#home" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="Home">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M27.9167 30H20.4167C19.2658 30 18.3333 29.1392 18.3333 28.0769V21.1538C18.3333 20.3038 17.5875 19.6154 16.6667 19.6154H13.3333C12.4125 19.6154 11.6667 20.3038 11.6667 21.1538V28.0769C11.6667 29.1392 10.7342 30 9.58333 30H2.08333C0.9325 30 0 29.1392 0 28.0769V13.3946C0 11.6262 0.878334 9.95539 2.3825 8.86154L14.2258 0.246923C14.68 -0.0823077 15.32 -0.0823077 15.7733 0.246923L27.6183 8.86154C29.1225 9.95539 30 11.6254 30 13.3931V28.0769C30 29.1392 29.0675 30 27.9167 30Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    Home
+                </div>
+            </a>
+
+            <!-- About -->
+            <a href="#about" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="About">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.0013 0C10.482 0 6.81914 3.50348 6.81914 7.82609V9.13044C6.81914 13.453 10.482 16.9565 15.0013 16.9565C19.5206 16.9565 23.1835 13.453 23.1835 9.13044V7.82609C23.1835 3.50348 19.5206 0 15.0013 0ZM14.9987 20.8696C9.53569 20.8696 2.52628 23.6959 0.509366 26.2041C-0.737054 27.755 0.44947 30 2.49366 30H27.5063C29.5505 30 30.7371 27.755 29.4906 26.2041C27.4737 23.6972 20.4616 20.8696 14.9987 20.8696Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    About
+                </div>
+            </a>
+
+            <!-- Skills -->
+            <a href="#skills" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="Skills">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.6641 0C19.4231 0 19.2178 0.171203 19.1738 0.408203L18.9531 1.58398C18.8961 1.88898 18.6546 2.11669 18.3496 2.17969C18.0656 2.23869 17.7857 2.31239 17.5137 2.40039C17.2187 2.49639 16.8973 2.42055 16.6953 2.18555L15.9199 1.2793C15.7629 1.0963 15.4981 1.05283 15.2891 1.17383L14.7109 1.50781C14.5029 1.62781 14.4083 1.88042 14.4883 2.10742L14.8848 3.23438C14.9878 3.52637 14.8931 3.84378 14.6621 4.05078C14.4471 4.24378 14.2438 4.44711 14.0508 4.66211C13.8438 4.89311 13.5264 4.98972 13.2344 4.88672L12.1055 4.48828C11.8785 4.40828 11.6278 4.50194 11.5078 4.71094L11.1719 5.29102C11.0519 5.49902 11.0973 5.76487 11.2793 5.92188L11.377 6.00586C12.56 6.02586 13.572 6.87206 13.791 8.03906L13.8516 8.35742L14.0605 8.11133C14.5195 7.57733 15.1622 7.28695 15.8262 7.25195C16.7222 5.89695 18.255 5 20 5C22.761 5 25 7.239 25 10C25 11.745 24.103 13.2779 22.748 14.1719C22.713 14.8359 22.4227 15.4795 21.8887 15.9375L21.6426 16.1465L21.9609 16.207C23.1279 16.426 23.9741 17.4381 23.9941 18.6211L24.0781 18.7188C24.2351 18.9017 24.5 18.9472 24.709 18.8262L25.2891 18.4902C25.4971 18.3702 25.5917 18.1196 25.5117 17.8926L25.1133 16.7637C25.0103 16.4717 25.1069 16.1543 25.3379 15.9473C25.5529 15.7543 25.7562 15.5509 25.9492 15.3359C26.1562 15.1049 26.4736 15.0103 26.7656 15.1133L27.8926 15.5098C28.1196 15.5898 28.3722 15.4961 28.4922 15.2871L28.8262 14.707C28.9462 14.499 28.9027 14.2351 28.7207 14.0781L27.8145 13.3008C27.5795 13.0988 27.5036 12.7774 27.5996 12.4824C27.6876 12.2104 27.7613 11.9324 27.8203 11.6484C27.8833 11.3444 28.111 11.1029 28.416 11.0449L29.5918 10.8223C29.8288 10.7813 30 10.5769 30 10.3359V9.66406C30 9.42306 29.8288 9.21783 29.5918 9.17383L28.416 8.95312C28.111 8.89612 27.8833 8.65461 27.8203 8.34961C27.7613 8.06561 27.6876 7.78567 27.5996 7.51367C27.5036 7.21867 27.5795 6.89731 27.8145 6.69531L28.7207 5.91992C28.9037 5.76292 28.9472 5.49806 28.8262 5.28906L28.4922 4.71094C28.3722 4.50294 28.1196 4.40828 27.8926 4.48828L26.7656 4.88477C26.4736 4.98777 26.1562 4.89311 25.9492 4.66211C25.7562 4.44711 25.5529 4.24378 25.3379 4.05078C25.1069 3.84378 25.0103 3.52637 25.1133 3.23438L25.5117 2.10547C25.5917 1.87847 25.4981 1.62781 25.2891 1.50781L24.709 1.17188C24.501 1.05188 24.2351 1.0973 24.0781 1.2793L23.3027 2.18555C23.1007 2.42055 22.7794 2.49639 22.4844 2.40039C22.2124 2.31239 21.9324 2.23869 21.6484 2.17969C21.3444 2.11669 21.1029 1.88703 21.0449 1.58203L20.8242 0.40625C20.7822 0.17025 20.5769 0 20.3359 0H19.6641ZM10.6641 8C10.4231 8 10.2178 8.17025 10.1738 8.40625L9.98828 9.39453C9.91128 9.80553 9.58383 10.1084 9.17383 10.1914C8.83283 10.2604 8.49788 10.3481 8.17188 10.4551C7.77588 10.5851 7.34131 10.4879 7.07031 10.1719L6.41992 9.41211C6.26292 9.23011 5.99706 9.18664 5.78906 9.30664L5.21094 9.64062C5.00194 9.76062 4.90828 10.0132 4.98828 10.2402L5.32422 11.1914C5.46222 11.5854 5.33053 12.0091 5.01953 12.2871C4.76253 12.5171 4.51806 12.7606 4.28906 13.0176C4.01106 13.3286 3.58736 13.4603 3.19336 13.3223L2.24023 12.9883C2.01323 12.9083 1.76258 13.0029 1.64258 13.2109L1.30664 13.7891C1.18564 13.9981 1.23106 14.2629 1.41406 14.4199L2.17383 15.0703C2.48983 15.3413 2.58703 15.7759 2.45703 16.1719C2.35003 16.4979 2.26236 16.8328 2.19336 17.1738C2.11036 17.5838 1.80748 17.9113 1.39648 17.9883L0.408203 18.1738C0.171203 18.2178 0 18.4231 0 18.6641V19.3359C0 19.5769 0.17025 19.7822 0.40625 19.8262L1.39453 20.0117C1.80553 20.0887 2.10841 20.4162 2.19141 20.8262C2.26041 21.1682 2.34808 21.5021 2.45508 21.8281C2.58508 22.2241 2.48788 22.6587 2.17188 22.9297L1.41211 23.5801C1.23011 23.7371 1.18664 24.0029 1.30664 24.2109L1.64062 24.7891C1.76062 24.9981 2.01323 25.0917 2.24023 25.0117L3.19141 24.6758C3.58541 24.5378 4.00911 24.6695 4.28711 24.9805C4.51711 25.2375 4.76058 25.4819 5.01758 25.7109C5.32858 25.9889 5.46027 26.4126 5.32227 26.8066L4.98828 27.7598C4.90828 27.9868 5.00294 28.2374 5.21094 28.3574L5.78906 28.6934C5.99806 28.8144 6.26292 28.7689 6.41992 28.5859L7.07031 27.8262C7.34131 27.5102 7.77588 27.413 8.17188 27.543C8.49788 27.65 8.83283 27.7376 9.17383 27.8066C9.58383 27.8896 9.91128 28.1925 9.98828 28.6035L10.1738 29.5918C10.2178 29.8288 10.4231 30 10.6641 30H11.3359C11.5769 30 11.7822 29.8287 11.8242 29.5938L12.0098 28.6055C12.0868 28.1945 12.4142 27.8916 12.8242 27.8086C13.1662 27.7396 13.5002 27.6519 13.8262 27.5449C14.2222 27.4149 14.6567 27.5121 14.9277 27.8281L15.5781 28.5879C15.7351 28.7699 15.999 28.8153 16.207 28.6953L16.7871 28.3594C16.9961 28.2394 17.0898 27.9887 17.0098 27.7617L16.6758 26.8086C16.5378 26.4146 16.6695 25.9909 16.9805 25.7129C17.2375 25.4829 17.4819 25.2394 17.7109 24.9824C17.9889 24.6714 18.4136 24.5397 18.8066 24.6777L19.7598 25.0117C19.9868 25.0917 20.2374 24.9971 20.3574 24.7891L20.6934 24.2109C20.8144 24.0019 20.7689 23.7371 20.5859 23.5801L19.8262 22.9297C19.5102 22.6587 19.413 22.2241 19.543 21.8281C19.65 21.5021 19.7376 21.1672 19.8066 20.8262C19.8896 20.4162 20.1925 20.0887 20.6035 20.0117L21.5918 19.8262C21.8288 19.7822 22 19.3359V18.6641C22 18.4231 21.8287 18.2188 21.5938 18.1758L20.6055 17.9902C20.1945 17.9132 19.8916 17.5838 19.8086 17.1738C19.7396 16.8328 19.6519 16.4979 19.5449 16.1719C19.4149 15.7759 19.5121 15.3433 19.8281 15.0723L20.5879 14.4219C20.7699 14.2649 20.8153 13.999 20.6953 13.791L20.3594 13.2109C20.2394 13.0019 19.9887 12.9083 19.7617 12.9883L18.8086 13.3242C18.4146 13.4622 17.9909 13.3305 17.7129 13.0195C17.4829 12.7625 17.2394 12.5181 16.9824 12.2891C16.6714 12.0111 16.5397 11.5874 16.6777 11.1934L17.0117 10.2402C17.0917 10.0132 16.9971 9.76258 16.7891 9.64258L16.2109 9.30664C16.0019 9.18564 15.7371 9.23106 15.5801 9.41406L14.9297 10.1738C14.6587 10.4898 14.2241 10.587 13.8281 10.457C13.5021 10.35 13.1672 10.2624 12.8262 10.1934C12.4162 10.1104 12.0887 9.80748 12.0117 9.39648L11.8262 8.4082C11.7822 8.1712 11.5769 8 11.3359 8H10.6641ZM20 9C19.448 9 19 9.448 19 10C19 10.552 19.448 11 20 11C20.552 11 21 10.552 21 10C21 9.448 20.552 9 20 9ZM11 13C14.314 13 17 15.686 17 19C17 22.314 14.314 25 11 25C7.686 25 5 22.314 5 19C5 15.686 7.686 13 11 13ZM11 17C9.895 17 9 17.895 9 19C9 20.105 9.895 21 11 21C12.105 21 13 20.105 13 19C13 17.895 12.105 17 11 17Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 transform scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    Skills
+                </div>
+            </a>
+
+            <!-- Projects -->
+            <a href="#projects" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="Projects">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.6923 0C10.1547 0 8.07692 2.16563 8.07692 4.8V6H10.3846V4.8C10.3846 3.45938 11.4032 2.4 12.6923 2.4H17.3077C18.5968 2.4 19.6154 3.45938 19.6154 4.8V6H21.9231V4.8C21.9231 2.16563 19.8453 0 17.3077 0H12.6923ZM5.625 7.2C2.51953 7.2 0 9.82031 0 13.05V24.15C0 27.3797 2.51953 30 5.625 30H24.375C27.4805 30 30 27.3797 30 24.15V13.05C30 9.82031 27.4805 7.2 24.375 7.2H5.625ZM15 15.4875C16.3386 15.4875 17.4159 16.6078 17.4159 18C17.4159 19.3922 16.3386 20.5125 15 20.5125C13.6614 20.5125 12.5841 19.3922 12.5841 18C12.5841 16.6078 13.6614 15.4875 15 15.4875Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 transform scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    Projects
+                </div>
+            </a>
+
+            <!-- Certificates -->
+            <a href="#certificates" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="Certificates">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 2.5C11.55 2.5 8.75 5.3 8.75 8.75C8.75 10.97 9.9 12.92 11.66 14.07L9.83 25.07L15 22.19L20.17 25.07L18.34 14.07C20.1 12.92 21.25 10.97 21.25 8.75C21.25 5.3 18.45 2.5 15 2.5ZM15 12.5C12.93 12.5 11.25 10.82 11.25 8.75C11.25 6.68 12.93 5 15 5C17.07 5 18.75 6.68 18.75 8.75C18.75 10.82 17.07 12.5 15 12.5ZM21.36 17.92L23.36 27.5L20 25.63L18.32 18.17C19.45 18.27 20.49 18.15 21.36 17.92ZM8.64 17.92C9.51 18.15 10.55 18.27 11.68 18.17L10 25.63L6.64 27.5L8.64 17.92Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 transform scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    Certificates
+                </div>
+            </a>
+
+            <!-- Education -->
+            <a href="#experience" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="Education">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.75 26.25H26.25V28.125H3.75V26.25ZM5.625 24.375V5.625C5.625 4.59375 6.46875 3.75 7.5 3.75H22.5C23.5312 3.75 24.375 4.59375 24.375 5.625V24.375H5.625ZM9.375 7.5H13.125V11.25H9.375V7.5ZM16.875 7.5H20.625V11.25H16.875V7.5ZM9.375 15H13.125V18.75H9.375V15ZM16.875 15H20.625V18.75H16.875V15ZM11.25 24.375H18.75V20.625H11.25V24.375Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 transform scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    Education
+                </div>
+            </a>
+
+            <!-- Contact -->
+            <a href="#contact" class="nav-link relative group hover:cursor-pointer hover:bg-slate-800 p-2 rounded-full transition-all duration-500" aria-label="Contact">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.4672 19.4199C21.9377 19.1095 21.2868 19.116 20.7598 19.4291L18.0912 21.0191C17.4938 21.3751 16.7477 21.3334 16.1999 20.9056C15.2529 20.166 13.7282 18.9217 12.4016 17.5952C11.0751 16.2687 9.8308 14.7439 9.09124 13.7969C8.66342 13.2491 8.62168 12.503 8.97776 11.9057L10.5677 9.23697C10.8821 8.71002 10.8847 8.05394 10.5743 7.52438L6.65865 0.835732C6.27909 0.188781 5.52518 -0.829478 4.79606 0.0492166C4.0878 0.221389 3.16825 0.641386 2.20434 1.6066C-0.813896 4.62483 -2.41693 9.71567 8.93342 21.066C20.2838 32.4164 25.3733 30.8146 28.3928 27.7951C29.3593 26.8286 29.778 25.9077 29.9515 25.1982C30.1276 24.4703 29.8145 23.7216 29.1689 23.3434C27.5567 22.4004 24.0794 20.3643 22.4672 19.4199Z" fill="white"></path>
+                </svg>
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-max px-2 py-1 text-white bg-black rounded-md opacity-0 transform scale-50 transition-all duration-500 group-hover:opacity-100 group-hover:scale-100 text-xs font-semibold ring-1 ring-white/10 shadow-lg">
+                    Contact
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Wrapper -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="hero-minimal" id="home">
+            <!-- Background overlays -->
+            <div class="hero-bg-glow"></div>
+            <div class="hero-grid-pattern"></div>
+            
+            <div class="container hero-minimal-container">
+                <!-- Subtitle centered at top -->
+                <div class="hero-subtitle show-reveal">
+                    👋 Hi, my name is Akhil Behara
+                </div>
+                
+                <!-- Main Layered Display (Text + Portrait Overlay) -->
+                <div class="hero-display show-reveal">
+                    <!-- Row 1: Solid Large Text -->
+                    <div class="hero-row-solid button" data-text="AI Engineer">
+                        <span class="actual-text">&nbsp;AI Engineer&nbsp;</span>
+                        <span aria-hidden="true" class="hover-text"><span class="hover-text-inner">&nbsp;AI Engineer&nbsp;</span></span>
+                    </div>
+                    
+                    <!-- Row 2: Outline Large Text -->
+                    <div class="hero-row-outline">
+                        & Data Analyst
+                    </div>
+                    
+                    <!-- Centered Grayscale Portrait Cutout -->
+                    <div class="hero-portrait-container">
+                        <div class="portrait-glow"></div>
+                        <img src="assets/images/avatar.png" alt="Akhi Avatar" class="hero-portrait-img">
+                    </div>
+
+                    <!-- Centered Action Buttons -->
+                    <div class="hero-actions-centered">
+                        <label class="resume-label">
+                            <input type="checkbox" class="resume-input" />
+                            <span class="resume-circle">
+                                <svg
+                                    class="resume-icon"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="1.5"
+                                        d="M12 19V5m0 14-4-4m4 4 4-4"
+                                    ></path>
+                                </svg>
+                                <div class="resume-square"></div>
+                            </span>
+                            <p class="resume-title">Resume</p>
+                            <p class="resume-title">Open</p>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Info Row (Tech Stack) -->
+                <div class="hero-info-row show-reveal" style="justify-content: center;">
+                    
+                    <div class="info-brands">
+                        <!-- React -->
+                        <div class="brand-item" title="React">
+                            <svg width="18" height="18" viewBox="-11.5 -10.23 23 20.46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <ellipse rx="11" ry="4.2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                                <ellipse rx="11" ry="4.2" stroke="currentColor" stroke-width="1.2" fill="none" transform="rotate(60)"/>
+                                <ellipse rx="11" ry="4.2" stroke="currentColor" stroke-width="1.2" fill="none" transform="rotate(120)"/>
+                                <circle r="2" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <!-- Node.js -->
+                        <div class="brand-item" title="Node.js">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2z"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 7 12 12 22 7"/>
+                                <line x1="12" y1="12" x2="12" y2="22"/>
+                            </svg>
+                        </div>
+                        <!-- Python -->
+                        <div class="brand-item" title="Python">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5v-1c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5v1zm0-3c0 .28-.22.5-.5.5h-1c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5h1c.28 0 .5.22.5.5v3z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <!-- MongoDB -->
+                        <div class="brand-item" title="MongoDB">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2C9.5 6 7 9.5 7 13.5C7 16 9.5 18 12 22C14.5 18 17 16 17 13.5C17 9.5 14.5 6 12 2Z"/>
+                            </svg>
+                        </div>
+                        <!-- Supabase -->
+                        <div class="brand-item" title="Supabase">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13.9 2L5 12.8h7.2L10.1 22L19 11.2h-7.2L13.9 2Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-title-wrap show-reveal">
+                    <span class="section-subtitle">Get to Know Me</span>
+                    <h2 class="section-title">About My Journey</h2>
+                </div>
+                
+                <!-- Interactive Git Branching About Layout -->
+                <div class="tooltip-container">
+                    <div class="trigger-wrapper">
+                        <svg class="branch-path-svg" viewBox="0 0 300 60">
+                            <path
+                                class="branch-line line-left"
+                                d="M150,0 C150,25 60,25 60,60"
+                                fill="none"
+                                stroke="#a371f7"
+                                stroke-width="3"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <path
+                                class="branch-line line-right"
+                                d="M150,0 C150,25 240,25 240,60"
+                                fill="none"
+                                stroke="#238636"
+                                stroke-width="3"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+                            <circle
+                                cx="60"
+                                cy="60"
+                                r="3"
+                                class="branch-dot dot-left"
+                                fill="#a371f7"
+                            ></circle>
+                            <circle
+                                cx="240"
+                                cy="60"
+                                r="3"
+                                class="branch-dot dot-right"
+                                fill="#238636"
+                            ></circle>
+                        </svg>
+
+                        <div class="about-cue-wrap" style="position: relative; display: inline-flex; flex-direction: column; align-items: center; gap: 6px;">
+                            <div class="about-trigger">About My Journey</div>
+                            <span class="about-glow desktop-cue">Hover to explore</span>
+                            <span class="about-glow mobile-cue">Click to reveal</span>
+                        </div>
+                    </div>
+
+                    <div class="tooltips-wrapper">
+                        <!-- Left Branch: Designing Code details -->
+                        <div class="tooltip-content about-left-branch" style="border-left: 3px solid #a371f7;">
+                            <h3 class="card-headline" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-primary);">AI Engineer • Automation Builder • Data Enthusiast</h3>
+                            <p class="about-text" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">
+                                I'm a Computer Science student specializing in AI & Data Science who enjoys turning ideas into working products. I build AI-powered applications, workflow automation systems, and full-stack platforms using Python, TypeScript, SQL, Supabase, and modern LLM APIs.
+                            </p>
+                            <p class="about-text" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                                Recent work includes FileFlow (20+ format browser-based processing), Data Agent (AI-powered data analysis), and ThinkRing (multi-service campus platform). I'm particularly interested in AI evaluation, automation, data engineering, and developer productivity tools.
+                            </p>
+                        </div>
+
+                        <!-- Right Branch: Statistics Cards Grid -->
+                        <div class="tooltip-content about-right-branch" style="border-left: 3px solid #238636;">
+                            <div class="stats-branch-grid">
+                                <div class="stat-branch-item">
+                                    <div class="stat-number" style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; margin-bottom: 0.25rem;">4+</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">AI & Software Projects</div>
+                                </div>
+                                <div class="stat-branch-item">
+                                    <div class="stat-number" style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; margin-bottom: 0.25rem;">3</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Industry Certifications</div>
+                                </div>
+                                <div class="stat-branch-item">
+                                    <div class="stat-number" style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; margin-bottom: 0.25rem;">20+</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Supported File Formats</div>
+                                </div>
+                                <div class="stat-branch-item">
+                                    <div class="stat-number" style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.1; margin-bottom: 0.25rem;">50+</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Datasets Evaluated</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills" id="skills" style="overflow: visible;">
+            <div class="container">
+                <div class="section-title-wrap show-reveal">
+                    <span class="section-subtitle">Competencies</span>
+                    <h2 class="section-title">My Technical Toolbox</h2>
+                </div>
+                    <div class="toolbox-container show-reveal">
+                    <!-- Box 1: AI & AGENTS -->
+                    <div class="toolbox-card-wrapper">
+                        <div class="social-skill-name"></div>
+                        <div class="main">
+                            <div class="card card-claude" data-skill="Claude API">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                            </div>
+                            <div class="card card-gemini" data-skill="Gemini API">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.7 9.3L24 12L14.7 14.7L12 24L9.3 14.7L0 12L9.3 9.3L12 0Z"/></svg>
+                            </div>
+                            <div class="card card-openai" data-skill="OpenAI API">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5-2.5-1.5-5.5 0-8s4.5-2.5 6 0 1.5 5.5 0 8-4.5 2.5-6 0zM10.5 7.5h3M10.5 16.5h3M7.5 10.5v3M16.5 10.5v3"/></svg>
+                            </div>
+                            <div class="card card-mcp" data-skill="MCP">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M10 17.5h4M6.5 10v4M17.5 10v4"/></svg>
+                            </div>
+                            <div class="card card-prompt" data-skill="Prompt Eng.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2l4 4-12 12-4-4zM2 22l4-4M10 4l1 1M14 2l1 1M5 11l1 1M3 15l1 1"/></svg>
+                            </div>
+                            <div class="card card-eval" data-skill="Model Eval.">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            </div>
+                            <div class="card card-rag" data-skill="RAG Systems">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="6" rx="1"/><rect x="3" y="11" width="18" height="6" rx="1"/><path d="M7 6h10M7 14h10M17 15l4 4"/></svg>
+                            </div>
+                            <div class="card card-pytorch" data-skill="PyTorch">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20L12 2zM12 7l6 11H6l6-11z"/></svg>
+                            </div>
+                            <div class="card card-huggingface" data-skill="HuggingFace">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+                            </div>
+                            <div class="text">
+                                <span class="category-title">AI & AGENTS</span>
+                                <span class="category-subtitle">Claude • Gemini • OpenAI • MCP • RAG</span>
+                                <span class="hover-hint">HOVER TO EXPLORE</span>
+                                <span class="click-hint">CLICK TO EXPLORE</span>
+                            </div>
+                            <div class="main_back main-back-ai"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 2: DATA & BACKEND -->
+                    <div class="toolbox-card-wrapper">
+                        <div class="social-skill-name"></div>
+                        <div class="main">
+                            <div class="card card-python" data-skill="Python">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18c-.9 0-1.66.72-1.66 1.62v2.7h3.38v1.08h-4.72c-.9 0-1.66.72-1.66 1.62v2.7c0 .9.72 1.62 1.62 1.62h6.76c.9 0 1.62-.72 1.62-1.62v-4.4c0-.9-.72-1.62-1.62-1.62h-1.66v-1.66c0-.9-.72-1.62-1.62-1.62zm-6.52 6.07c-.9 0-1.62.72-1.62 1.62v4.4c0 .9.72 1.62 1.62 1.62h1.66v1.66c0 .9.72 1.62 1.62 1.62h1.66c.9 0 1.66-.72 1.66-1.62v-2.7h-3.38v-1.08h4.72c.9 0 1.62-.72 1.62-1.62v-2.7c0-.9-.72-1.62-1.62-1.62H7.73z"/></svg>
+                            </div>
+                            <div class="card card-ts" data-skill="TypeScript">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.376c-.186-.77-.836-1.433-2.124-1.94-.832-.326-1.17-.63-1.17-1.1 0-.515.458-.836 1.1-.836.75 0 1.17.3 1.385.9l1.823-.888c-.524-1.216-1.634-1.874-3.21-1.874-2.085 0-3.34 1.258-3.34 2.936 0 2.222 1.82 2.83 3.53 3.51 1 .39 1.48.68 1.48 1.25 0 .563-.564.938-1.34.938-.98 0-1.604-.425-1.92-1.238l-1.823.974c.63 1.5 2 2.13 3.73 2.13 2.454 0 3.56-1.26 3.56-3.13 0-.9-.234-1.6-.72-2.1zm-10.457-.26H15.1v-1.7h-3.52v-6.15H9.6v7.85h1.98z"/></svg>
+                            </div>
+                            <div class="card card-js" data-skill="JavaScript">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.376c-.186-.77-.836-1.433-2.124-1.94-.832-.326-1.17-.63-1.17-1.1 0-.515.458-.836 1.1-.836.75 0 1.17.3 1.385.9l1.823-.888c-.524-1.216-1.634-1.874-3.21-1.874-2.085 0-3.34 1.258-3.34 2.936 0 2.222 1.82 2.83 3.53 3.51 1 .39 1.48.68 1.48 1.25 0 .563-.564.938-1.34.938-.98 0-1.604-.425-1.92-1.238l-1.823.974c.63 1.5 2 2.13 3.73 2.13 2.454 0 3.56-1.26 3.56-3.13 0-.9-.234-1.6-.72-2.1zm-8.406.82v-7.85H11.5v7.925c0 1.247-.57 1.9-1.72 1.9-.925 0-1.503-.49-1.747-1.116L6.2 21.01c.71 1.4 2.1 2.02 3.76 2.02 2.8 0 3.66-1.65 3.66-3.83z"/></svg>
+                            </div>
+                            <div class="card card-sql" data-skill="SQL">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6"/></svg>
+                            </div>
+                            <div class="card card-postgres" data-skill="PostgreSQL">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10H12V2z"/></svg>
+                            </div>
+                            <div class="card card-mongodb" data-skill="MongoDB">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c0 0-6 4.5-6 10c0 3.3 2.7 6 6 6s6-2.7 6-6c0-5.5-6-10-6-10zM12 18v4"/></svg>
+                            </div>
+                            <div class="card card-pandas" data-skill="Pandas">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+                            </div>
+                            <div class="card card-tableau" data-skill="Tableau">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M12 7h5M12 17h-5M7 12h5M17 12h-5"/></svg>
+                            </div>
+                            <div class="card card-eda" data-skill="EDA">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"/><path d="M21 21l-6-6M7 10h6M10 7v6"/></svg>
+                            </div>
+                            <div class="text">
+                                <span class="category-title">DATA & BACKEND</span>
+                                <span class="category-subtitle">Python • TypeScript • SQL • Postgres • MongoDB</span>
+                                <span class="hover-hint">HOVER TO EXPLORE</span>
+                                <span class="click-hint">CLICK TO EXPLORE</span>
+                            </div>
+                            <div class="main_back main-back-data"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 3: AUTOMATION & TOOLS -->
+                    <div class="toolbox-card-wrapper">
+                        <div class="social-skill-name"></div>
+                        <div class="main">
+                            <div class="card card-etl" data-skill="ETL Pipelines">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="6" cy="12" rx="3" ry="1.5"/><ellipse cx="18" cy="12" rx="3" ry="1.5"/><path d="M9 12h6M13 9l3 3-3 3"/></svg>
+                            </div>
+                            <div class="card card-workflow" data-skill="Workflows">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M9 12h3c1 0 2-1 2-2V7c0-1 1-2 2-2M14 10v4c0 1 1 2 2 2h2"/></svg>
+                            </div>
+                            <div class="card card-validation" data-skill="Data Validation">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 11l2 2 4-4"/></svg>
+                            </div>
+                            <div class="card card-error" data-skill="Error Handling">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
+                            </div>
+                            <div class="card card-git" data-skill="Git">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 15V9a4 4 0 0 0-4-4H9M6 9v6"/></svg>
+                            </div>
+                            <div class="card card-github" data-skill="GitHub">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            </div>
+                            <div class="card card-supabase" data-skill="Supabase">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 11.6L13 22.3c-.4.5-1.1.2-1.1-.4V14H3.6c-.6 0-.9-.7-.5-1.1L11.5 1.7c.4-.5 1.1-.2 1.1.4V10h8.3c.6 0 .9.7.5 1.6z"/></svg>
+                            </div>
+                            <div class="card card-vscode" data-skill="VS Code">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.984 6.802l-2.624-9.071L12.35 6.136 6.802.585.8 4.6l10.155 7.4L.8 19.4l6.002 4.015 5.548-5.551 9.01 8.405 2.624-9.072-6.551-3.6 6.551-3.69z"/></svg>
+                            </div>
+                            <div class="card card-docker" data-skill="Docker">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="4" height="4"/><rect x="8" y="10" width="4" height="4"/><rect x="13" y="10" width="4" height="4"/><rect x="18" y="10" width="4" height="4"/><path d="M3 16s3 2 9 2 9-2 9-2v-2H3v2z"/></svg>
+                            </div>
+                            <div class="text">
+                                <span class="category-title">AUTOMATION & TOOLS</span>
+                                <span class="category-subtitle">ETL • Git • Supabase • VS Code • Docker</span>
+                                <span class="hover-hint">HOVER TO EXPLORE</span>
+                                <span class="click-hint">CLICK TO EXPLORE</span>
+                            </div>
+                            <div class="main_back main-back-tools"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="portfolio" id="projects">
+            <div class="container">
+                <div class="section-title-wrap show-reveal">
+                    <span class="section-subtitle">Showcase</span>
+                    <h2 class="section-title">Selected Creations</h2>
+                    <span class="cue-glow desktop-cue">Hover me</span>
+                    <span class="cue-glow mobile-cue" style="display: none;">Click me</span>
+                </div>
+                
+                <div class="project-books-grid show-reveal flex flex-wrap justify-center gap-8 py-8">
+                    <!-- Book 1: Data Agent -->
+                    <div class="project-book">
+                        <div class="project-book-details p-5 flex flex-col justify-between h-full bg-slate-50 text-slate-800 rounded-lg">
+                            <div>
+                                <span class="text-[10px] font-bold text-violet-600 uppercase tracking-widest">AI Data Pipeline</span>
+                                <h3 class="text-base font-extrabold mt-1 text-slate-900 leading-tight">Data Agent</h3>
+                                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-4">
+                                    AI-powered data analysis system for dataset ingestion, transformation, and automated insight generation using Python, Claude API, and SQL.
+                                </p>
+                                <div class="flex flex-wrap gap-1 mt-3">
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">Python</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">Claude API</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">SQL</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="https://github.com/akhilbehara999/data-agent" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs py-1.5 px-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded transition-colors">View Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-book-cover">
+                            <img src="assets/images/agent.JPG" alt="Data Agent Cover" class="w-full h-full object-cover rounded-lg" />
+                            <div class="project-book-cover-title">Data Agent</div>
+                        </div>
+                    </div>
+
+                    <!-- Book 2: FileFlow -->
+                    <div class="project-book">
+                        <div class="project-book-details p-5 flex flex-col justify-between h-full bg-slate-50 text-slate-800 rounded-lg">
+                            <div>
+                                <span class="text-[10px] font-bold text-violet-600 uppercase tracking-widest">Privacy-First Automation</span>
+                                <h3 class="text-base font-extrabold mt-1 text-slate-900 leading-tight">FileFlow</h3>
+                                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-4">
+                                    Privacy-first file processing platform supporting 20+ file formats across images, documents, audio, and video using Next.js, TypeScript, and FFmpeg WASM.
+                                </p>
+                                <div class="flex flex-wrap gap-1 mt-3">
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">Next.js</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">TypeScript</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">FFmpeg</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="https://github.com/akhilbehara999/FileFlow" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs py-1.5 px-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded transition-colors">View Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-book-cover">
+                            <img src="assets/images/filepro.JPG" alt="FileFlow Cover" class="w-full h-full object-cover rounded-lg" />
+                            <div class="project-book-cover-title">FileFlow</div>
+                        </div>
+                    </div>
+
+                    <!-- Book 3: ThinkRing -->
+                    <div class="project-book">
+                        <div class="project-book-details p-5 flex flex-col justify-between h-full bg-slate-50 text-slate-800 rounded-lg">
+                            <div>
+                                <span class="text-[10px] font-bold text-violet-600 uppercase tracking-widest">Campus Management Platform</span>
+                                <h3 class="text-base font-extrabold mt-1 text-slate-900 leading-tight">ThinkRing</h3>
+                                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-4">
+                                    Campus management platform with 5+ integrated student services using JavaScript and Supabase. Implemented secure authentication, role-based access control, and scalable cloud-backed architecture.
+                                </p>
+                                <div class="flex flex-wrap gap-1 mt-3">
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">PostgreSQL</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">Supabase</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="https://github.com/akhilbehara999/thinkring-project-with-supabase" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs py-1.5 px-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded transition-colors">View Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-book-cover">
+                            <img src="assets/images/thinkering.JPG" alt="ThinkRing Cover" class="w-full h-full object-cover rounded-lg" />
+                            <div class="project-book-cover-title">ThinkRing</div>
+                        </div>
+                    </div>
+
+                    <!-- Book 4: Data Jobs Salary Analysis -->
+                    <div class="project-book">
+                        <div class="project-book-details p-5 flex flex-col justify-between h-full bg-slate-50 text-slate-800 rounded-lg">
+                            <div>
+                                <span class="text-[10px] font-bold text-violet-600 uppercase tracking-widest">Data Analytics</span>
+                                <h3 class="text-base font-extrabold mt-1 text-slate-900 leading-tight">Data Jobs Salary Analysis</h3>
+                                <p class="text-xs text-slate-600 mt-2.5 leading-relaxed line-clamp-4">
+                                    Analyzed 50K+ job postings to identify salary trends, in-demand skills, and hiring patterns within the data industry using Python, SQL, and Tableau.
+                                </p>
+                                <div class="flex flex-wrap gap-1 mt-3">
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">Python</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">SQL</span>
+                                    <span class="text-[9px] bg-slate-200/60 text-slate-700 px-1.5 py-0.5 rounded font-mono">Tableau</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="https://data-jobs-salary-analysis-zrjymrqkcvgo53tpxwq9uh.streamlit.app/" target="_blank" rel="noopener noreferrer" class="flex-1 text-center text-xs py-1.5 px-3 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded transition-colors">Demo</a>
+                                <a href="https://github.com/akhilbehara999/data-jobs-salary-analysis" target="_blank" rel="noopener noreferrer" class="flex-1 text-center text-xs py-1.5 px-3 border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold rounded transition-colors">Code</a>
+                            </div>
+                        </div>
+                        <div class="project-book-cover">
+                            <img src="assets/images/datajobs.JPG" alt="Data Jobs Salary Analysis Cover" class="w-full h-full object-cover rounded-lg" />
+                            <div class="project-book-cover-title">Data Jobs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section class="certificates" id="certificates" aria-label="Professional Certifications" style="overflow: visible;">
+            <div class="container">
+                <div class="section-title-wrap show-reveal">
+                    <span class="section-subtitle">Verifications</span>
+                    <h2 class="section-title">Professional Certifications</h2>
+                </div>
+                
+                <div class="certificates-wrapper show-reveal mt-10">
+                    <div class="text-center">
+                        <span class="cue-glow desktop-cue">Hover me</span>
+                        <span class="cue-glow mobile-cue" style="display: none;">Click me</span>
+                    </div>
+                    <div class="certificates-horizontal-row flex flex-nowrap overflow-x-auto gap-8 py-6 px-4 justify-start md:justify-center" role="list" aria-label="Certificate cards">
+                        
+                        <!-- Card 1: Anthropic AI Agent Builder -->
+                        <div class="cert-hover-card" id="cert-anthropic">
+                            <img src="assets/images/claude.jpg" alt="Anthropic Certificate" class="cert-hover-card-img" />
+                            <div class="cert-hover-content">
+                                <p class="cert-hover-title">Anthropic AI Agent Builder</p>
+                                <div class="cert-hover-description">
+                                    <p><strong>Issuer:</strong> Anthropic</p>
+                                    <p><strong>Issued:</strong> 2026</p>
+                                    <p><strong>Focus:</strong> Claude, Cursor, and Model Context Protocol (MCP)</p>
+                                    <p class="mt-2 text-slate-300">Demonstrated mastery in constructing complex Model Context Protocol configurations and running AI-augmented programming sprints.</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/17admX0QmL7Q5iKRmlnonzi9T-VUgC4Jr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-verify-link">Anthropic AI &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Tata iQ Data Analytics -->
+                        <div class="cert-hover-card" id="cert-tata">
+                            <img src="assets/images/tata.jpg" alt="Tata iQ Certificate" class="cert-hover-card-img" />
+                            <div class="cert-hover-content">
+                                <p class="cert-hover-title">Tata iQ Data Analytics</p>
+                                <div class="cert-hover-description">
+                                    <p><strong>Issuer:</strong> Tata iQ</p>
+                                    <p><strong>Issued:</strong> 2025</p>
+                                    <p><strong>Focus:</strong> Exploratory Data Analysis (EDA) and Predictive Modeling</p>
+                                    <p class="mt-2 text-slate-300">Conducted exploratory data analysis and built predictive models using GenAI workflows for business intelligence.</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/1bEuAeYRFeXNeSITguOUADD4A4uJ3Qesr/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-verify-link">Tata iQ Insights &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Deloitte Forensic Simulation -->
+                        <div class="cert-hover-card" id="cert-deloitte">
+                            <img src="assets/images/deloitte.jpg" alt="Deloitte Certificate" class="cert-hover-card-img" />
+                            <div class="cert-hover-content">
+                                <p class="cert-hover-title">Deloitte Forensic Simulation</p>
+                                <div class="cert-hover-description">
+                                    <p><strong>Issuer:</strong> Deloitte</p>
+                                    <p><strong>Issued:</strong> 2025</p>
+                                    <p><strong>Focus:</strong> Forensic Analysis and Tableau</p>
+                                    <p class="mt-2 text-slate-300">Conducted forensic data analysis and created visual dashboards to detect compliance anomalies and fraud patterns.</p>
+                                </div>
+                                <a href="https://drive.google.com/file/d/13-SeMjEOwBhtqGzInpa6yKWh2nIWIM6P/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="cert-verify-link">Deloitte Simulation &rarr;</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section class="experience" id="experience" style="overflow: visible;">
+            <div class="container">
+                <div class="section-title-wrap show-reveal">
+                    <span class="section-subtitle">Timeline</span>
+                    <h2 class="section-title">Education & Milestones</h2>
+                </div>
+                
+                <div class="witcher-marquee-viewport show-reveal">
+                    <button class="witcher-nav witcher-nav-left" aria-label="Scroll left" type="button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <div class="witcher-marquee-track">
+                        
+                        <!-- CARD 1: School of the Cat (ThinkRing Benchmarking) -->
+                        <div class="witcher-card school-cat" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Database Benchmark Lab</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 20 L25 5 L35 40 L20 50 L35 65 L50 85 L65 65 L80 50 L65 40 L75 5 Z"></path>
+                                        <path d="M50 20 L35 40 L50 50 L65 40 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M25 5 L35 40 L30 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M75 5 L65 40 L70 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M35 48 L45 52 L40 56 Z"></path>
+                                        <path class="wolf-eyes" d="M65 48 L55 52 L60 56 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Benchmark Creator</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>ThinkRing System</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Jan 2025 - Feb 2025</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Postgres/Mongo 40% Speedup</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 2: School of the Griffin (B.Tech CS - AI & Data Science) -->
+                        <div class="witcher-card school-griffin" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">AI & Data Science Track</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L25 35 L30 55 L40 60 L50 85 L60 60 L70 55 L75 35 Z"></path>
+                                        <path d="M42 50 L50 75 L58 50 Z" fill="#2a2a2a" opacity="0.5"></path>
+                                        <path d="M50 15 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M32 42 L42 46 L38 50 Z"></path>
+                                        <path class="wolf-eyes" d="M68 42 L58 46 L62 50 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>B.Tech CS Student</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>School</span>
+                                        <span>Chaitanya Eng. College</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>2023 - 2027</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>AI & Data Science (3rd Yr)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3: School of the Wolf (Hackathon Lead) -->
+                        <div class="witcher-card school-wolf" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">GenAI Hackathon Sprint</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L20 30 L25 55 L35 70 L50 85 L65 70 L75 55 L80 30 Z"></path>
+                                        <path d="M50 15 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M20 30 L35 35 L30 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M80 30 L65 35 L70 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M42 60 L50 65 L58 60 L50 85 Z" fill="#1a1a1a" opacity="0.5"></path>
+                                        <path class="wolf-eyes" d="M35 45 L45 50 L40 55 Z"></path>
+                                        <path class="wolf-eyes" d="M65 45 L55 50 L60 55 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>GenAI Hackathon Lead</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>AI-Augmented Team</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Feb 2025</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Led 4 devs, Prototype 24h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 4: School of the Viper (Deloitte Forensic Simulation) -->
+                        <div class="witcher-card school-viper" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Forensic Simulation</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L25 45 L35 70 L50 85 L65 70 L75 45 Z"></path>
+                                        <path d="M42 55 L40 68 L45 58 Z" fill="#fff" opacity="0.8"></path>
+                                        <path d="M58 55 L60 68 L55 58 Z" fill="#fff" opacity="0.8"></path>
+                                        <path d="M50 15 L35 35 L50 48 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M34 44 L44 48 L38 52 Z"></path>
+                                        <path class="wolf-eyes" d="M66 44 L56 48 L62 52 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Forensic Simulation</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>Deloitte Simulated Audit</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Nov 2024 - Dec 2024</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Compliance via Tableau</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 5: School of the Bear (Tata iQ Data Analytics) -->
+                        <div class="witcher-card school-bear" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Data Analytics Simulation</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 20 L25 25 L20 45 L30 55 L35 75 L50 85 L65 75 L70 55 L80 45 L75 25 Z"></path>
+                                        <path d="M40 55 L50 60 L60 55 L50 80 Z" fill="#1a1a1a" opacity="0.5"></path>
+                                        <path d="M50 20 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M33 42 L43 47 L38 52 Z"></path>
+                                        <path class="wolf-eyes" d="M67 42 L57 47 L62 52 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Data Analytics EDA</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>Tata iQ Simulation</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Dec 2024 - Jan 2025</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>EDA & Predictive Analytics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 6: School of the Manticore (Immediate Availability) -->
+                        <div class="witcher-card school-manticore" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">AI & Automation Track</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 25 L20 10 L30 40 L22 55 L35 70 L50 85 L65 70 L78 55 L70 40 L80 10 Z"></path>
+                                        <path d="M50 25 L35 40 L50 50 L65 40 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M33 46 L43 50 L38 54 Z"></path>
+                                        <path class="wolf-eyes" d="M67 46 L57 50 L62 54 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Active Candidate</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>Internships Immediate</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Present</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>AI & Automation Engineering</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 7: Intermediate (MPC) -->
+                        <div class="witcher-card school-wolf" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Intermediate</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L25 35 L30 55 L40 60 L50 85 L60 60 L70 55 L75 35 Z"></path>
+                                        <path d="M42 50 L50 75 L58 50 Z" fill="#2a2a2a" opacity="0.5"></path>
+                                        <path d="M50 15 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M32 42 L42 46 L38 50 Z"></path>
+                                        <path class="wolf-eyes" d="M68 42 L58 46 L62 50 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Intermediate Completed</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>School</span>
+                                        <span>A.P. Model School</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>2021 - 2023</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>MPC Stream</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 8: 10th Grade -->
+                        <div class="witcher-card school-bear" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">SSC / 10th Grade</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 20 L25 25 L20 45 L30 55 L35 75 L50 85 L65 75 L70 55 L80 45 L75 25 Z"></path>
+                                        <path d="M40 55 L50 60 L60 55 L50 80 Z" fill="#1a1a1a" opacity="0.5"></path>
+                                        <path d="M50 20 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M33 42 L43 47 L38 52 Z"></path>
+                                        <path class="wolf-eyes" d="M67 42 L57 47 L62 52 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>10th Grade Completed</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>School</span>
+                                        <span>A.P. Model School</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>2021</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Secondary Education</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ================= DUPLICATES FOR SEAMLESS LOOP ================= -->
+
+                        <!-- CARD 7 (D): Intermediate (MPC) -->
+                        <div class="witcher-card school-wolf" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Intermediate</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L25 35 L30 55 L40 60 L50 85 L60 60 L70 55 L75 35 Z"></path>
+                                        <path d="M42 50 L50 75 L58 50 Z" fill="#2a2a2a" opacity="0.5"></path>
+                                        <path d="M50 15 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M32 42 L42 46 L38 50 Z"></path>
+                                        <path class="wolf-eyes" d="M68 42 L58 46 L62 50 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Intermediate Completed</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>School</span>
+                                        <span>A.P. Model School</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>2021 - 2023</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>MPC Stream</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 8 (D): 10th Grade -->
+                        <div class="witcher-card school-bear" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">SSC / 10th Grade</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 20 L25 25 L20 45 L30 55 L35 75 L50 85 L65 75 L70 55 L80 45 L75 25 Z"></path>
+                                        <path d="M40 55 L50 60 L60 55 L50 80 Z" fill="#1a1a1a" opacity="0.5"></path>
+                                        <path d="M50 20 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M33 42 L43 47 L38 52 Z"></path>
+                                        <path class="wolf-eyes" d="M67 42 L57 47 L62 52 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>10th Grade Completed</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>School</span>
+                                        <span>A.P. Model School</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>2021</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Secondary Education</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 1 (D): Database Benchmark Lab -->
+                        <div class="witcher-card school-cat" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Database Benchmark Lab</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 20 L25 5 L35 40 L20 50 L35 65 L50 85 L65 65 L80 50 L65 40 L75 5 Z"></path>
+                                        <path d="M50 20 L35 40 L50 50 L65 40 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M25 5 L35 40 L30 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M75 5 L65 40 L70 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M35 48 L45 52 L40 56 Z"></path>
+                                        <path class="wolf-eyes" d="M65 48 L55 52 L60 56 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Benchmark Creator</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>ThinkRing System</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Jan 2025 - Feb 2025</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Postgres/Mongo 40% Speedup</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 2 (D): School of the Griffin (B.Tech CS - AI & Data Science) -->
+                        <div class="witcher-card school-griffin" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">AI & Data Science Track</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L25 35 L30 55 L40 60 L50 85 L60 60 L70 55 L75 35 Z"></path>
+                                        <path d="M42 50 L50 75 L58 50 Z" fill="#2a2a2a" opacity="0.5"></path>
+                                        <path d="M50 15 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M32 42 L42 46 L38 50 Z"></path>
+                                        <path class="wolf-eyes" d="M68 42 L58 46 L62 50 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>B.Tech CS Student</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>School</span>
+                                        <span>Chaitanya Eng. College</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>2023 - 2027</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>AI & Data Science (3rd Yr)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3 (D): School of the Wolf (Hackathon Lead) -->
+                        <div class="witcher-card school-wolf" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">GenAI Hackathon Sprint</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L20 30 L25 55 L35 70 L50 85 L65 70 L75 55 L80 30 Z"></path>
+                                        <path d="M50 15 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M20 30 L35 35 L30 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M80 30 L65 35 L70 50 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path d="M42 60 L50 65 L58 60 L50 85 Z" fill="#1a1a1a" opacity="0.5"></path>
+                                        <path class="wolf-eyes" d="M35 45 L45 50 L40 55 Z"></path>
+                                        <path class="wolf-eyes" d="M65 45 L55 50 L60 55 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>GenAI Hackathon Lead</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>AI-Augmented Team</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Feb 2025</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Led 4 devs, Prototype 24h</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 4 (D): School of the Viper (Deloitte Forensic Simulation) -->
+                        <div class="witcher-card school-viper" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Forensic Simulation</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 15 L25 45 L35 70 L50 85 L65 70 L75 45 Z"></path>
+                                        <path d="M42 55 L40 68 L45 58 Z" fill="#fff" opacity="0.8"></path>
+                                        <path d="M58 55 L60 68 L55 58 Z" fill="#fff" opacity="0.8"></path>
+                                        <path d="M50 15 L35 35 L50 48 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M34 44 L44 48 L38 52 Z"></path>
+                                        <path class="wolf-eyes" d="M66 44 L56 48 L62 52 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Forensic Simulation</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>Deloitte Simulated Audit</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Nov 2024 - Dec 2024</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>Compliance via Tableau</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 5 (D): School of the Bear (Tata iQ Data Analytics) -->
+                        <div class="witcher-card school-bear" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">Data Analytics Simulation</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 20 L25 25 L20 45 L30 55 L35 75 L50 85 L65 75 L70 55 L80 45 L75 25 Z"></path>
+                                        <path d="M40 55 L50 60 L60 55 L50 80 Z" fill="#1a1a1a" opacity="0.5"></path>
+                                        <path d="M50 20 L35 35 L50 45 L65 35 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M33 42 L43 47 L38 52 Z"></path>
+                                        <path class="wolf-eyes" d="M67 42 L57 47 L62 52 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Data Analytics EDA</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>Tata iQ Simulation</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Dec 2024 - Jan 2025</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>EDA & Predictive Analytics</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 6 (D): School of the Manticore (Immediate Availability) -->
+                        <div class="witcher-card school-manticore" tabindex="0">
+                            <div class="witcher-card-corner top-left"></div>
+                            <div class="witcher-card-corner top-right"></div>
+                            <div class="witcher-card-corner bottom-left"></div>
+                            <div class="witcher-card-corner bottom-right"></div>
+
+                            <div class="witcher-card-content">
+                                <div class="witcher-card-title">AI & Automation Track</div>
+
+                                <div class="witcher-card-icon">
+                                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M50 25 L20 10 L30 40 L22 55 L35 70 L50 85 L65 70 L78 55 L70 40 L80 10 Z"></path>
+                                        <path d="M50 25 L35 40 L50 50 L65 40 Z" fill="#2a2a2a" opacity="0.3"></path>
+                                        <path class="wolf-eyes" d="M33 46 L43 50 L38 54 Z"></path>
+                                        <path class="wolf-eyes" d="M67 46 L57 50 L62 54 Z"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="witcher-card-details">
+                                    <div class="witcher-card-stat">
+                                        <span>Milestone</span>
+                                        <span>Active Candidate</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Org</span>
+                                        <span>Internships Immediate</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Dates</span>
+                                        <span>Present</span>
+                                    </div>
+                                    <div class="witcher-card-stat">
+                                        <span>Focus</span>
+                                        <span>AI & Automation Engineering</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="witcher-nav witcher-nav-right" aria-label="Scroll right" type="button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-title-wrap show-reveal">
+                    <span class="section-subtitle">Reach Out</span>
+                    <h2 class="section-title">Let's Create Together</h2>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Message Form Styled as Sign Up Card -->
+                    <form class="contact-card show-reveal" id="contact-form" novalidate>
+                        <a class="singup">Contact Me</a>
+                        <div class="inputBox">
+                            <input type="text" id="contact-name" required="required">
+                            <span>Name</span>
+                        </div>
+
+                        <div class="inputBox1">
+                            <input type="email" id="contact-email" required="required">
+                            <span class="user">Email</span>
+                        </div>
+
+                        <div class="inputBox">
+                            <input type="text" id="contact-message" required="required">
+                            <span>Message</span>
+                        </div>
+
+                        <button type="submit" class="enter" id="form-submit-btn">Send</button>
+                    </form>
+
+                    <!-- Social Media Links Section -->
+                    <ul class="example-2 show-reveal">
+                      <li class="icon-content">
+                        <a
+                          data-social="linkedin"
+                          aria-label="LinkedIn"
+                          href="https://www.linkedin.com/in/pondara-akhil-behara-016126381"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div class="filled"></div>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            height="24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          </svg>
+                        </a>
+                        <div class="tooltip">LinkedIn</div>
+                      </li>
+                      <li class="icon-content">
+                        <a
+                          data-social="github"
+                          aria-label="GitHub"
+                          href="https://github.com/akhilbehara999"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div class="filled"></div>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            height="24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          </svg>
+                        </a>
+                        <div class="tooltip">GitHub</div>
+                      </li>
+                      <li class="icon-content">
+                        <a
+                          data-social="instagram"
+                          aria-label="Instagram"
+                          href="https://www.instagram.com/Akhil_majunu"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div class="filled"></div>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            height="24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.013-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                          </svg>
+                        </a>
+                        <div class="tooltip">Instagram</div>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <a href="#home" class="logo">
+                <span>Akhil.Dev</span>
+                <span class="logo-dot"></span>
+            </a>
+            <div class="footer-text">
+                &copy; <span id="footer-year">2026</span> Akhil Behara. Data Analyst & AI Enthusiast. Built with curiosity and code.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Overlay Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/canvas-bg.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
