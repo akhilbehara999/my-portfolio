@@ -1145,12 +1145,12 @@ textarea.form-input {
     height: 19em;
     padding: 2rem;
     z-index: 10;
-    background: rgba(20, 14, 32, 0.55); /* Lighter dark-purple/gray background for contrast */
-    border: 1px solid rgba(139, 92, 246, 0.18); /* Glowing purple border */
+    background: transparent;
+    border: none;
     border-radius: var(--radius-lg);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -1160,9 +1160,9 @@ textarea.form-input {
 .toolbox-card-wrapper:hover,
 .toolbox-card-wrapper.active {
     transform: translateY(-8px);
-    border-color: rgba(139, 92, 246, 0.5);
-    box-shadow: 0 16px 40px rgba(139, 92, 246, 0.25), inset 0 0 15px rgba(139, 92, 246, 0.1);
-    background: rgba(24, 16, 42, 0.7);
+    border-color: transparent;
+    box-shadow: none;
+    background: transparent;
 }
 
 /* =========================================================
@@ -1177,27 +1177,22 @@ textarea.form-input {
   width: 11em;
   height: 11em;
   z-index: -2;
-  /* Amethyst theme gradient: deep violet → teal → magenta */
-  background: linear-gradient(270deg,
-      #8B5CF6,
-      #06B6D4,
-      #D946EF);
-  box-shadow: inset 0px 0px 60px 8px rgba(255, 255, 255, 0.15);
+  background: linear-gradient(270deg, #03a9f4, #cc39a4, #ffb5d2);
+  box-shadow: inset 0px 0px 180px 5px #ffffff;
   transition: opacity 0.4s ease-in-out,
       transform 0.4s ease-in-out,
       filter 0.4s ease-in-out;
-  opacity: 0.18;
 }
 
 /* Category-specific tint shifts */
 .main-back-ai {
-  background: linear-gradient(270deg, #D946EF, #8B5CF6, #06B6D4);
+  background: linear-gradient(270deg, #03a9f4, #cc39a4, #ffb5d2);
 }
 .main-back-data {
-  background: linear-gradient(270deg, #8B5CF6, #06B6D4, #D946EF);
+  background: linear-gradient(270deg, #03a9f4, #cc39a4, #ffb5d2);
 }
 .main-back-tools {
-  background: linear-gradient(270deg, #06B6D4, #D946EF, #8B5CF6);
+  background: linear-gradient(270deg, #03a9f4, #cc39a4, #ffb5d2);
 }
 
 .main {
@@ -1218,14 +1213,12 @@ textarea.form-input {
   justify-content: center;
   width: 60px;
   height: 60px;
+  border-radius: 0px; /* Overrides layout.css profile card leakage */
   border-top-left-radius: 10px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.596);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  opacity: 0;
-  transform: scale(0.65);
-  pointer-events: none;
+  border: 1px solid transparent;
   transition: 0.4s ease-in-out,
       0.2s background-color ease-in-out,
       0.2s background-image ease-in-out;
@@ -1286,9 +1279,9 @@ textarea.form-input {
 .main.active .card {
   margin: 0.2em;
   border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
@@ -1310,79 +1303,95 @@ textarea.form-input {
   opacity: 1;
 }
 
-/* --- Per-card hover colours (amethyst palette) --- */
-/* Card 1 — violet */
+/* --- Per-card hover colours (user-supplied palette) --- */
+/* Card 1 — Instagram Pink/Magenta */
 .card:nth-child(1):hover {
-  background-color: #8B5CF6;
+  background-color: #cc39a4;
 }
 .card:nth-child(1):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 2 — teal */
+/* Card 2 — Twitter Blue */
 .card:nth-child(2):hover {
-  background-color: #06B6D4;
+  background-color: #03a9f4;
 }
 .card:nth-child(2):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 3 — magenta */
+/* Card 3 — Dribbble Pink */
 .card:nth-child(3):hover {
-  background-color: #D946EF;
+  background-color: #ffb5d2;
 }
 .card:nth-child(3):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 4 — deep slate (dark contrast) */
+/* Card 4 — LinkedIn/Codepen Blue */
 .card:nth-child(4):hover {
-  background-color: #1e1b2e;
+  background-color: #0072b1;
 }
 .card:nth-child(4):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 5 — amethyst glow gradient */
+/* Card 5 — Center Gradient */
 .card:nth-child(5):hover {
-  animation: amethystGrad 0.35s ease-in-out forwards;
+  animation: cardFiveGrad 0.35s ease-in-out forwards;
 }
-@keyframes amethystGrad {
+@keyframes cardFiveGrad {
   100% {
-    background-image: linear-gradient(135deg, #8B5CF6, #D946EF, #06B6D4);
+    background-image: linear-gradient(#bf66ff, #6248ff, #00ddeb);
   }
 }
 
-/* Card 6 — indigo */
+/* Card 6 — Facebook Blue */
 .card:nth-child(6):hover {
-  background-color: #6366f1;
+  background-color: #3b5998;
 }
 .card:nth-child(6):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 7 — near-black */
+/* Card 7 — Github Black */
 .card:nth-child(7):hover {
-  background-color: #08050e;
+  background-color: #111111;
 }
 .card:nth-child(7):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 8 — cyan */
+/* Card 8 — Whatsapp/Linkedin Blue */
 .card:nth-child(8):hover {
-  background-color: #06B6D4;
+  background-color: #00aff0;
 }
 .card:nth-child(8):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
-/* Card 9 — rose */
+/* Card 9 — Reddit Red/Orange */
 .card:nth-child(9):hover {
   background-color: #e11d48;
 }
 .card:nth-child(9):hover svg {
   fill: #ffffff;
+  color: #ffffff;
+  stroke: #ffffff;
 }
 
 /* Text label sits on top of the grid */
@@ -1390,7 +1399,7 @@ textarea.form-input {
   position: absolute;
   font-family: var(--font-heading);
   transition: 0.4s ease-in-out;
-  color: var(--text-primary);
+  color: #000000;
   text-align: center;
   font-weight: 900;
   letter-spacing: 0.33em;
@@ -1406,14 +1415,14 @@ textarea.form-input {
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: #000000;
+  text-shadow: none;
 }
 .category-subtitle {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
   opacity: 0.9;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.4;
   max-width: 90%;
@@ -1425,12 +1434,12 @@ textarea.form-input {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(139, 92, 246, 0.2);
-  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: #000000;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 3px 10px;
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.12);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 

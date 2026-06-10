@@ -386,18 +386,20 @@ function setupMobileCertificatesClick() {
 
 // --- Mobile Tap/Click Handler to Expand Witcher Cards ---
 function setupMobileWitcherMarqueeClick() {
-    const cards = document.querySelectorAll('.witcher-card');
-    if (cards.length === 0) return;
+    const track = document.querySelector('.witcher-marquee-track');
+    if (!track) return;
 
-    cards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            const isActive = card.classList.contains('active');
-            cards.forEach(c => c.classList.remove('active'));
-            if (!isActive) {
-                card.classList.add('active');
-            }
-            e.stopPropagation();
-        });
+    track.addEventListener('click', (e) => {
+        const card = e.target.closest('.witcher-card');
+        if (!card) return;
+
+        const isActive = card.classList.contains('active');
+        const allCards = track.querySelectorAll('.witcher-card');
+        allCards.forEach(c => c.classList.remove('active'));
+        if (!isActive) {
+            card.classList.add('active');
+        }
+        e.stopPropagation();
     });
 }
 
@@ -406,6 +408,21 @@ function setupWitcherDraggableMarquee() {
     const viewport = document.querySelector('.witcher-marquee-viewport');
     const track = document.querySelector('.witcher-marquee-track');
     if (!viewport || !track) return;
+
+    // Save original cards before cloning
+    const originalCards = Array.from(track.children).filter(el => el.classList.contains('witcher-card'));
+    const originalCount = originalCards.length;
+    if (originalCount === 0) return;
+
+    // Clone original cards twice (making 3 sets total) to allow infinite seamless looping in both directions.
+    originalCards.forEach(card => {
+        const clone1 = card.cloneNode(true);
+        track.appendChild(clone1);
+    });
+    originalCards.forEach(card => {
+        const clone2 = card.cloneNode(true);
+        track.appendChild(clone2);
+    });
 
     const ARROW_STEP_CARD = 4;
     const AUTO_RESUME_DELAY = 1200;
@@ -417,17 +434,31 @@ function setupWitcherDraggableMarquee() {
     let velocity = 0;
     let prevPointerX = 0;
     let prevTime = 0;
-    let arrowShiftRemain = 0;
     let autoPaused = false;
     let autoResumeTimer = null;
+    let initialized = false;
+    let autoOffset = 0;
 
     const cards = () => Array.from(track.children).filter(el => el.classList.contains('witcher-card'));
+    
     const cardWidth = () => {
         const c = cards();
         if (!c.length) return 0;
         const style = getComputedStyle(track);
         const gap = parseFloat(style.gap) || 0;
         return c[0].getBoundingClientRect().width + gap;
+    };
+
+    const originalWidth = () => {
+        return originalCount * cardWidth();
+    };
+
+    const clampAndWrap = (value) => {
+        const w = originalWidth();
+        if (!w) return value;
+        let offset = (value + w) % w;
+        if (offset > 0) offset -= w;
+        return offset - w;
     };
 
     const setTranslate = (value, className) => {
@@ -441,29 +472,32 @@ function setupWitcherDraggableMarquee() {
         track.classList.add('paused');
         autoPaused = true;
     };
+    
     const resumeAutoSoon = () => {
         clearTimeout(autoResumeTimer);
         autoResumeTimer = setTimeout(() => {
             if (!pointerDown) {
                 clearTransformClass('paused');
                 autoPaused = false;
-                arrowShiftRemain = 0;
             }
         }, AUTO_RESUME_DELAY);
     };
 
-    const clampAndWrap = (value) => {
-        const single = cardWidth() * cards().length;
-        if (!single) return value;
-        let v = value % single;
-        if (v > 0) v -= single;
-        if (v < -single) v += single;
-        return v;
+    const checkInit = () => {
+        if (initialized) return;
+        const w = originalWidth();
+        if (w > 0) {
+            autoOffset = -w;
+            currentTranslate = -w;
+            track.style.transform = `translate3d(${-w}px, 0, 0)`;
+            initialized = true;
+        }
     };
 
     // Pointer drag
     viewport.addEventListener('pointerdown', (e) => {
         if (e.target.closest('.witcher-nav')) return;
+        checkInit();
         pointerDown = true;
         viewport.setPointerCapture(e.pointerId);
         startPointerX = e.clientX;
@@ -483,7 +517,7 @@ function setupWitcherDraggableMarquee() {
         if (dt > 0) velocity = (e.clientX - prevPointerX) / dt;
         prevPointerX = e.clientX;
         prevTime = now;
-        setTranslate(startTranslate + dx);
+        setTranslate(clampAndWrap(startTranslate + dx));
     });
 
     const endDrag = () => {
@@ -494,6 +528,7 @@ function setupWitcherDraggableMarquee() {
         let settle = currentTranslate - velocity * 120;
         settle = clampAndWrap(settle);
         setTranslate(settle, 'arrow-shift');
+        autoOffset = settle;
         setTimeout(() => clearTransformClass('arrow-shift'), 360);
         resumeAutoSoon();
     };
@@ -505,12 +540,13 @@ function setupWitcherDraggableMarquee() {
     viewport.querySelectorAll('.witcher-nav').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
+            checkInit();
             pauseAuto();
-            arrowShiftRemain += btn.classList.contains('witcher-nav-right') ? -1 : 1;
             const step = (btn.classList.contains('witcher-nav-right') ? -1 : 1) * cardWidth() * (ARROW_STEP_CARD || 4);
             let target = currentTranslate + step;
             target = clampAndWrap(target);
             setTranslate(target, 'arrow-shift');
+            autoOffset = target;
             setTimeout(() => clearTransformClass('arrow-shift'), 360);
             resumeAutoSoon();
         });
@@ -518,28 +554,19 @@ function setupWitcherDraggableMarquee() {
 
     // Keep seamless loop as track translates continuously
     let last = performance.now();
-    let autoOffset = 0;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const speed = reducedMotion ? 18 : 35;
 
     const tick = (time) => {
+        checkInit();
         const dt = Math.min(time - last, 250);
         last = time;
-        if (!autoPaused && !pointerDown) {
+        if (initialized && !autoPaused && !pointerDown) {
             if (!reducedMotion) {
                 autoOffset -= (speed * dt) / 1000;
-                if (arrowShiftRemain) {
-                    autoOffset += arrowShiftRemain * (speed * dt) / 1000 * 2;
-                    if (Math.abs(autoOffset) >= cardWidth()) {
-                        const delta = autoOffset > 0 ? -1 : 1;
-                        arrowShiftRemain += delta;
-                        autoOffset += delta * cardWidth();
-                    }
-                }
-                setTranslate(clampAndWrap(autoOffset));
+                autoOffset = clampAndWrap(autoOffset);
+                setTranslate(autoOffset);
             }
-        } else if (autoPaused && !pointerDown && !arrowShiftRemain && reducedMotion) {
-            // no-op for reduced motion while paused
         }
         requestAnimationFrame(tick);
     };
@@ -547,9 +574,11 @@ function setupWitcherDraggableMarquee() {
 
     // Recalculate on resize
     window.addEventListener('resize', () => {
-        autoOffset = clampAndWrap(autoOffset);
-        currentTranslate = autoOffset;
-        track.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`;
+        if (initialized) {
+            autoOffset = clampAndWrap(autoOffset);
+            currentTranslate = autoOffset;
+            track.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`;
+        }
     });
 
     // Ensure transform is under JS control from first frame.
