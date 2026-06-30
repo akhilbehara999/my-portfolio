@@ -281,70 +281,29 @@ function setupPreloader() {
     }, 2000); // 2 seconds
 }
 
-// --- Mobile Click to Reveal Toolbox Cards ---
-function setupToolboxCardsClick() {
-  const mainContainers = document.querySelectorAll('.toolbox-card-wrapper .main');
-  if (mainContainers.length === 0) return;
+// --- Comic Panel Skill Block Click to Copy ---
+function setupComicPanelClick() {
+  const items = document.querySelectorAll('.item-color');
+  if (items.length === 0) return;
 
-  mainContainers.forEach(main => {
-    main.addEventListener('click', (e) => {
-      const isActive = main.classList.contains('active');
-      mainContainers.forEach(m => m.classList.remove('active'));
-      if (!isActive) {
-        main.classList.add('active');
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const skill = item.getAttribute('aria-color');
+      if (!skill) return;
+
+      // Copy to clipboard
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(skill).catch(() => {});
       }
-      e.stopPropagation();
+
+      // Activate
+      items.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // Reset after 1.2s
+      setTimeout(() => item.classList.remove('active'), 1200);
     });
-
-    main.addEventListener('touchstart', (e) => {
-      const isActive = main.classList.contains('active');
-      mainContainers.forEach(m => m.classList.remove('active'));
-      if (!isActive) {
-        main.classList.add('active');
-      }
-      e.stopPropagation();
-    }, { passive: true });
   });
-
-  document.addEventListener('click', (e) => {
-    const inside = e.target.closest('.toolbox-card-wrapper .main');
-    const projectBook = e.target.closest('.project-book');
-    if (!inside && !projectBook && mainContainers.length > 0) {
-      mainContainers.forEach(m => m.classList.remove('active'));
-    }
-  });
-}
-
-// --- Skill Name Display on Hover ---
-function setupSkillNameDisplayHover() {
-    const wrappers = document.querySelectorAll('.toolbox-card-wrapper');
-    wrappers.forEach(wrapper => {
-        const skillNameDisplay = wrapper.querySelector('.social-skill-name');
-        const cards = wrapper.querySelectorAll('.card');
-        
-        if (!skillNameDisplay) return;
-        
-        cards.forEach(card => {
-            const skillName = card.getAttribute('data-skill');
-            if (!skillName) return;
-            
-            card.addEventListener('mouseenter', () => {
-                skillNameDisplay.textContent = skillName;
-                skillNameDisplay.classList.add('active');
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                skillNameDisplay.classList.remove('active');
-            });
-            
-            // Touch support for mobile
-            card.addEventListener('touchstart', (e) => {
-                skillNameDisplay.textContent = skillName;
-                skillNameDisplay.classList.add('active');
-                e.stopPropagation();
-            });
-        });
-    });
 }
 
 
@@ -426,6 +385,7 @@ function setupWitcherDraggableMarquee() {
 
     const ARROW_STEP_CARD = 4;
     const AUTO_RESUME_DELAY = 1200;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
     let pointerDown = false;
     let startPointerX = 0;
@@ -494,9 +454,9 @@ function setupWitcherDraggableMarquee() {
         }
     };
 
-    // Pointer drag
+    // Pointer drag (desktop only - mobile uses native scroll snap)
     viewport.addEventListener('pointerdown', (e) => {
-        if (e.target.closest('.witcher-nav')) return;
+        if (isMobile || e.target.closest('.witcher-nav')) return;
         checkInit();
         pointerDown = true;
         viewport.setPointerCapture(e.pointerId);
@@ -510,7 +470,7 @@ function setupWitcherDraggableMarquee() {
     });
 
     viewport.addEventListener('pointermove', (e) => {
-        if (!pointerDown) return;
+        if (isMobile || !pointerDown) return;
         const dx = e.clientX - startPointerX;
         const now = Date.now();
         const dt = now - prevTime;
@@ -521,7 +481,7 @@ function setupWitcherDraggableMarquee() {
     });
 
     const endDrag = () => {
-        if (!pointerDown) return;
+        if (isMobile || !pointerDown) return;
         pointerDown = false;
         track.classList.remove('dragging');
 
@@ -540,6 +500,15 @@ function setupWitcherDraggableMarquee() {
     viewport.querySelectorAll('.witcher-nav').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (isMobile) {
+                const card = track.querySelector('.witcher-card');
+                if (!card) return;
+                const cardW = card.getBoundingClientRect().width;
+                const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                const step = (btn.classList.contains('witcher-nav-right') ? 1 : -1) * (cardW + gap) * 2;
+                viewport.scrollBy({ left: step, behavior: 'smooth' });
+                return;
+            }
             checkInit();
             pauseAuto();
             const step = (btn.classList.contains('witcher-nav-right') ? -1 : 1) * cardWidth() * (ARROW_STEP_CARD || 4);
@@ -558,6 +527,10 @@ function setupWitcherDraggableMarquee() {
     const speed = reducedMotion ? 18 : 35;
 
     const tick = (time) => {
+        if (isMobile) {
+            requestAnimationFrame(tick);
+            return;
+        }
         checkInit();
         const dt = Math.min(time - last, 250);
         last = time;
@@ -700,8 +673,8 @@ function setupResumeButton() {
             // Trigger download/view at 75% of the 3.5s animation progress (2625ms)
             setTimeout(() => {
                 const link = document.createElement('a');
-                link.href = 'assets/docs/resume.pdf';
-                link.download = 'resume.pdf';
+                link.href = 'assets/docs/Resume.pdf';
+                link.download = 'Resume.pdf';
                 link.target = '_blank';
                 document.body.appendChild(link);
                 link.click();
@@ -777,7 +750,7 @@ function setupDockHoverEffect() {
 
 // --- Staggered Scroll Reveals ---
 function setupStaggeredReveals() {
-    const parentClasses = ['.stats-branch-grid', '.toolbox-container', '.project-books-grid', '.skills-category-card', '.timeline-card'];
+    const parentClasses = ['.stats-branch-grid', '.comic-panel-wrapper', '.project-books-grid', '.skills-category-card', '.timeline-card'];
     parentClasses.forEach(selector => {
         const containers = document.querySelectorAll(selector);
         containers.forEach(container => {
@@ -797,8 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollObserver();
     setupActiveNavLinkSync();
     setupContactForm();
-    setupToolboxCardsClick();
-    setupSkillNameDisplayHover();
+    setupComicPanelClick();
     setupMobileCertificatesClick();
     setupMobileWitcherMarqueeClick();
     setupWitcherDraggableMarquee();
